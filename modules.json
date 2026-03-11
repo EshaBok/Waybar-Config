@@ -1,0 +1,143 @@
+{
+  // Workspaces
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+  // Rofi Application Launcher
+  "custom/appmenu": {
+    "format": "󰣇",
+    "tooltip-format": "Open the application launcher
+    // \nRight: Show all keybindings",
+    "on-click": "wofi --show drun --allow-images --width 450 --height 400 --style ~/.config/wofi/wallust-style.css; hyprctl dispatch focuswindow '^(Wofi)'",
+    "on-click-right": "~/.config/notscripter/scripts/keybindings.sh",
+    "tooltip": false
+  },
+  // Power Menu
+  "custom/exit": {
+    "format": " ",
+    "tooltip-format": "Powermenu",
+    "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh; hyprctl dispatch focuswindow '^(Rofi)'",
+    "on-click": "wlogout -b 2 -r 50 -c 50",
+    "tooltip": false
+  },
+  "custom/notification": {
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<sup></sup>",
+      "none": "",
+      "dnd-notification": "<sup></sup>",
+      "dnd-none": "",
+      "inhibited-notification": "<sup></sup>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<sup></sup>",
+      "dnd-inhibited-none": ""
+    },
+    "tooltip": false,
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  // Keyboard State
+  //"keyboard-state": {
+  //  //"numlock": true,
+  //  //"capslock": true,
+  //  //"format": "{name} {icon}",
+  //  //"format-icons": {
+  //  //  //"locked": "",
+  //  //  //"unlocked": ""
+  //  //}
+  //},
+  // System tray
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  // Clock
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "󰥔 {0:%H:%M}",
+    "format-alt": "󰥔 {0:%H:%M}   {0:%A %d %B %Y}"
+  },
+  "hyprland/language": {
+    "format": "/ K {short}"
+  },
+  // Network
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-ethernet": "   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-disconnected": "Not connected",
+    "tooltip-format": "  {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 1,
+  },
+  // Battery
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
+  },
+  // Bluetooth
+  "bluetooth": {
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "format-no-controller": ""
+  },
+  // VPN 
+  "custom/vpn": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/vpn-status.sh",
+    "on-click": "~/.config/waybar/scripts/vpn-toggle.sh",
+    "interval": 3,
+    "return-type": "json",
+    "tooltip": false
+  },
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false
+  },
+  // Idle Inhibator
+  //  "idle_inhibitor": {
+  //    "format": "{icon}",
+  //    "tooltip": true,
+  //    "format-icons": {
+  //      "activated": "",
+  //      "deactivated": ""
+  //    },
+  //    "on-click-right": "hyprlock"
+  //  }
+}
