@@ -1,62 +1,52 @@
+/* style.css */
+
 * {
-    font-family: "FiraMono Nerd Font";
-    font-size: 15px;
+    font-family: "Inter", "JetBrains Mono", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
 }
 
+/* 1. Make the main container completely invisible */
 window#waybar {
-    all: unset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-.modules-left, .modules-center, .modules-right {
-    padding: 7px;
-    margin: 10px;
-    border-radius: 10px;
-    background: rgba(40,40,40,0.6);
-    box-shadow: 0 0 2px rgba(0,0,0,0.6);
+/* 2. Remove backgrounds from all modules */
+#workspaces, 
+#clock, 
+#battery, 
+#network, 
+#pulseaudio, 
+#cpu, 
+#memory,
+#tray,
+#custom-notification,
+#custom-pacman {
+    background: transparent;
+    color: #2d2d2d; /* Your charcoal color */
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    box-shadow: none;
 }
 
-#clock {
-    padding: 0px 5px;
-    color: #ebdbb2;
-    transition: all 0.3s ease;
+/* 3. Clean up workspace buttons so they don't have boxes either */
+#workspaces button {
+    background: transparent;
+    color: #2d2d2d;
+    border: none;
 }
 
-#clock:hover {
-    color: #fb4934;
-}
-
+/* Active workspace - we'll use a simple underline instead of a box */
 #workspaces button.active {
-    color: #fb4934;
+    background: transparent;
+    color: #000000;
+    border-bottom: 2px solid #2d2d2d;
 }
 
-#workspaces button.empty {
-    color: rgba(255,255,255,0.2);
+/* Hover effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.05);
 }
-
-#workspaces button.empty.active {
-    color: #fb4934;
-}
-
-#cpu, #memory, #temperature, #network, #battery, #bluetooth, #tray {
-    padding: 0px 5px;
-    color: #ebdbb2;
-    transition: all 0.3s ease;
-}
-
-#battery.charging {
-    color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    color: #ffbe61;
-}
-
-#battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
